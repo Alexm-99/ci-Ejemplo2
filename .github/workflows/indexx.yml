@@ -1,20 +1,19 @@
-name: index
+name: Test
 
-on: 
+on:
   push:
-      branches: [ master ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
-  jobs:
-    test:
-      run-on: ubuntu-lastest
-
-  steps: 
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@v2
-    - uses: actions/septup-node@v2
-    with:
-      node-version: '12'
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12'
     - run: npm ci
     - run: npm test
-    
+  
